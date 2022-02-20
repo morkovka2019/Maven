@@ -1,12 +1,12 @@
 package test_scripts;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class SimpleTest {
         @Test
         public void sumTest() {
-            Assert.assertEquals(7, 10 - 3);
+            Assertions.assertEquals(10 - 3, 7);
         }
 
 }
