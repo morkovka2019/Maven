@@ -43,7 +43,9 @@ public class CreateNewUserTest extends BaseTest {
     @DisplayName("Create new user")
     @Description("New user creation test")
     @Story("Sign Up")
-    @Epic("Test script - HIL17 NewUserCreationTest")
+    @Epic("Hillel web-site")
+    @Feature("Sign Up")
+    @Link("https://test.jira.com/HIL-1734")
     @Issue("HIL-1753")
     @Test
     public void createNewUserTest() {
