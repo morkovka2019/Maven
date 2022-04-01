@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,11 +21,12 @@ public class HomePage {
         this.driver = driver;
     }
 
+    @Step("OpenHome Page")
     public HomePage open() {
         driver.navigate().to(pageURL);
         return checkOnPage();
     }
-
+    @Step("Click Sign In")
     public AuthorizationPage clickSignIn() {
         driver.findElement(signInButton).click();
         return new AuthorizationPage(driver);

@@ -2,13 +2,22 @@ package test_scripts;
 
 import io.codearte.jfairy.Fairy;
 import io.codearte.jfairy.producer.person.Person;
+import io.qameta.allure.*;
+import jdk.jfr.Description;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.AuthorizationPage;
 import pages.CreateAnAccountPage;
 import pages.HomePage;
 import pages.MyAccountPage;
 import utils.PropertyReader;
+import utils.WebDriverUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class CreateNewUserTest extends BaseTest {
     Fairy fairy = Fairy.create();
@@ -21,6 +30,21 @@ public class CreateNewUserTest extends BaseTest {
     String pass = person.getPassword();
     String phone = person.getTelephoneNumber();
 
+    @AfterEach
+    public void allureAttachScreenshot() {
+        File screenShot = WebDriverUtils.getScreenshot(driver);
+        try {
+            Allure.addAttachment("New user creation test screenshot", Files.newInputStream(screenShot.toPath()));
+        } catch (IOException e) {
+            System.err.println("Could not attach screenshot");
+        }
+    }
+
+    @DisplayName("Create new user")
+    @Description("New user creation test")
+    @Story("Sign Up")
+    @Epic("Test script - HIL17 NewUserCreationTest")
+    @Issue("HIL-1753")
     @Test
     public void createNewUserTest() {
         driver.get(PropertyReader.BASEURL);

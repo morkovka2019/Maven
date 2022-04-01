@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,41 +43,49 @@ public class CreateAnAccountPage {
         return this;
     }
 
+    @Step("Choose Gender - Mr")
     public CreateAnAccountPage chooseMrGender() {
         driver.findElement(mrRadioButtonLocator).click();
         return this;
     }
 
+    @Step("Choose Gender - Mrs")
     public CreateAnAccountPage chooseMrsGender() {
         driver.findElement(mrsRadioButtonLocator).click();
         return this;
     }
 
+    @Step("Input first name")
     public CreateAnAccountPage inputFirstName(String firstName) {
         driver.findElement(firstNameLocator).sendKeys(firstName);
         return this;
     }
 
+    @Step("Input last name")
     public CreateAnAccountPage inputLastName(String lastName)  {
         driver.findElement(lastNameLocator).sendKeys(lastName);
         return this;
     }
 
+    @Step("Input password")
     public CreateAnAccountPage inputPassword(String pass)  {
         driver.findElement(passwordLocator).sendKeys(pass);
         return this;
     }
 
+    @Step("Input Address 1")
     public CreateAnAccountPage inputAddress1(String address)  {
         driver.findElement(addres1Locator).sendKeys(address);
         return this;
     }
 
+    @Step("Input city")
     public CreateAnAccountPage inputCity(String city)  {
         driver.findElement(cityLocator).sendKeys(city);
         return this;
     }
 
+    @Step("Choose state")
     public CreateAnAccountPage chooseState(String state) {
         driver.findElement(stateLocator).click();
         switch (state) {
@@ -94,26 +103,30 @@ public class CreateAnAccountPage {
         return this;
     }
 
+    @Step("Input postcode")
     public CreateAnAccountPage inputPostcode (String postcode) {
         driver.findElement(postalCodeLocator).sendKeys(postcode);
         return this;
     }
 
+    @Step("Input phone")
     public CreateAnAccountPage inputPhone (String phone) {
         driver.findElement(mobilePhoneLocator).sendKeys(phone);
         return this;
     }
 
+    @Step("Input Address alias")
     public CreateAnAccountPage inputAddressAlias (String alias) {
         driver.findElement(assignAnAddressLocator).sendKeys(alias);
         return this;
     }
 
+    @Step("Click register button")
     public CreateAnAccountPage clickRegisterButton() {
         driver.findElement(registerButtonLocator).click();
         return this;
     }
-
+    @Step("New user creation")
     public MyAccountPage doCreationNewUser(String gender, String firstName, String lastName, String pass,
                                            String address, String city, String state, String postcode, String phone,
                                            String alias) {
