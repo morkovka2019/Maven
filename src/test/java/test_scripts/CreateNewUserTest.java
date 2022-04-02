@@ -8,6 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pages.AuthorizationPage;
 import pages.CreateAnAccountPage;
 import pages.HomePage;
@@ -30,6 +32,8 @@ public class CreateNewUserTest extends BaseTest {
     String pass = person.getPassword();
     String phone = person.getTelephoneNumber();
 
+    Logger log = LoggerFactory.getLogger(CreateNewUserTest.class);
+
     @AfterEach
     public void allureAttachScreenshot() {
         File screenShot = WebDriverUtils.getScreenshot(driver);
@@ -49,16 +53,22 @@ public class CreateNewUserTest extends BaseTest {
     @Issue("HIL-1753")
     @Test
     public void createNewUserTest() {
+        log.info("Start CreateNewUserTest");
         driver.get(PropertyReader.BASEURL);
+        log.info("Open web-site");
         HomePage homePage = new HomePage(driver).waitOnPage();
+        log.info("Navigate to the Authorization page");
         AuthorizationPage authorizationPage = homePage.clickSignIn();
         authorizationPage.checkOnPage();
+        log.info("Navigate to the Create an account page");
         CreateAnAccountPage createAnAccountPage = authorizationPage.startCreation(email);
         createAnAccountPage.waitOnPage();
+        log.info("Create an account");
         MyAccountPage myAccountPage = createAnAccountPage.doCreationNewUser("Mrs", firstName,
                 lastName, pass, "testAddress", "Adak", "Alaska", "87995",
                 phone, "testAlias");
         String account = myAccountPage.getAuthorizedAccount();
+        log.info("Verify that new account is created");
         Assertions.assertEquals(fullName, account);
     }
 }
