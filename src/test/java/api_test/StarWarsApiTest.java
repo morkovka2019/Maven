@@ -15,19 +15,19 @@ public class StarWarsApiTest {
 
     @BeforeEach
     public void setUp() {
-        RestAssured.baseURI = "https://swapi.dev";
+        RestAssured.baseURI = "https://swapi.dev/api";
     }
 
+
     @Test
-    public void getShipInfoTest() {
-        Response response = RestAssured.get();
-        log.info(response.prettyPrint());
+    public Response getShipInfo() {
+        Response response = RestAssured.get("/starships/10");
+        return response;
     }
 
     @Test
     public void checkShipNameTest() {
-        when().get("https://swapi.dev/api/starships/10")
-                .then()
+         getShipInfo().then()
                 .log().body()
                 .statusCode(200)
                 .assertThat()
@@ -36,8 +36,7 @@ public class StarWarsApiTest {
 
     @Test
     public void checkShipCostInCreditsTest() {
-        when().get("https://swapi.dev/api/starships/10")
-                .then()
+        getShipInfo().then()
                 .log().body()
                 .statusCode(200)
                 .assertThat()
@@ -46,8 +45,7 @@ public class StarWarsApiTest {
 
     @Test
     public void checkShipLengthTest() {
-        when().get("https://swapi.dev/api/starships/10")
-                .then()
+        getShipInfo().then()
                 .log().body()
                 .statusCode(200)
                 .assertThat()
@@ -56,8 +54,7 @@ public class StarWarsApiTest {
 
     @Test
     public void checkShipPilotsQuantityTest() {
-        when().get("https://swapi.dev/api/starships/10")
-                .then()
+        getShipInfo().then()
                 .log().body()
                 .statusCode(200)
                 .assertThat()
