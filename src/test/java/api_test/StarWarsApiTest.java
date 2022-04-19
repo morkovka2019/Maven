@@ -18,8 +18,6 @@ public class StarWarsApiTest {
         RestAssured.baseURI = "https://swapi.dev/api";
     }
 
-
-    @Test
     public Response getShipInfo() {
         Response response = RestAssured.get("/starships/10");
         return response;
