@@ -28,12 +28,11 @@ public class Converter {
         return list;
     }
     public static void main(String[] args) {
-        int size = 9;
+        int size = 7;
         int[] myArray = new int [size];
 
         feelTheListCreation(myArray, size);
-        Converter.numericArrayToList(myArray);
-        List myArList = Converter.getList();
-        Converter.printList(myArList);
+        numericArrayToList(myArray);
+        printList(getList());
     }
 }
