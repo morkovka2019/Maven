@@ -1,5 +1,4 @@
 package generics;
-
 import java.util.*;
 
 public class Converter {
@@ -20,7 +19,7 @@ public class Converter {
         }
     }
 
-    public static int[] feelTheListCreation(int[] list, int s) {
+    public static int[] fillTheListCreation(int[] list, int s) {
         Random random = new Random();
         for (int k = 0; k < s; k++) {
             list[k] = random.nextInt(9);
@@ -31,7 +30,7 @@ public class Converter {
         int size = 7;
         int[] myArray = new int [size];
 
-        feelTheListCreation(myArray, size);
+        fillTheListCreation(myArray, size);
         numericArrayToList(myArray);
         printList(getList());
     }
