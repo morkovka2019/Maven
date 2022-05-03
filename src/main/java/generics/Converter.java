@@ -2,7 +2,7 @@ package generics;
 import java.util.*;
 
 public class Converter {
-    private static List converteredList = new ArrayList<>();
+    private static List<Number> converteredList = new ArrayList<>();
 
 
     public static void numericArrayToList( int [] arrayToConv ) {
@@ -10,9 +10,11 @@ public class Converter {
             converteredList.add(arrayToConv[i]);
         }
     }
+
     public static List getList() {
         return converteredList;
     }
+
     public static void printList( List listToPrint ) {
         for (int i=0; i < listToPrint.size(); i++) {
             System.out.println(listToPrint.get(i));
