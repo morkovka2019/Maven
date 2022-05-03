@@ -11,7 +11,7 @@ public class Converter {
         }
     }
 
-    public static List getList() {
+    public static List<Number> getList() {
         return converteredList;
     }
 
