@@ -1,27 +1,28 @@
 package generics;
+
 import java.util.*;
 
 public class Converter {
-    private static List<Number> converteredList = new ArrayList<>();
+    private List<Number> converteredList = new ArrayList<>();
 
 
-    public static void numericArrayToList( int [] arrayToConv ) {
+    public void numericArrayToList( int[] arrayToConv ) {
         for (int i=0; i<arrayToConv.length; i++) {
             converteredList.add(arrayToConv[i]);
         }
     }
 
-    public static List<Number> getList() {
-        return converteredList;
+    public List<Number> getList() {
+        return this.converteredList;
     }
 
-    public static void printList( List listToPrint ) {
+    public void printList( List listToPrint ) {
         for (int i=0; i < listToPrint.size(); i++) {
             System.out.println(listToPrint.get(i));
         }
     }
 
-    public static int[] fillTheListCreation(int[] list, int s) {
+    public int[] fillTheListCreation(int[] list, int s) {
         Random random = new Random();
         for (int k = 0; k < s; k++) {
             list[k] = random.nextInt(9);
@@ -29,11 +30,12 @@ public class Converter {
         return list;
     }
     public static void main(String[] args) {
+        Converter converter = new Converter();
         int size = 7;
         int[] myArray = new int [size];
 
-        fillTheListCreation(myArray, size);
-        numericArrayToList(myArray);
-        printList(getList());
+        converter.fillTheListCreation(myArray, size);
+        converter.numericArrayToList(myArray);
+        converter.printList(converter.getList());
     }
 }
