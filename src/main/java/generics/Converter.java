@@ -12,6 +12,12 @@ public class Converter {
         }
     }
 
+    public void numericArrayToList( Float[] arrayToConv ) {
+        for (int i=0; i<arrayToConv.length; i++) {
+            converteredList.add(arrayToConv[i]);
+        }
+    }
+
     public List<Number> getList() {
         return this.converteredList;
     }
@@ -31,11 +37,13 @@ public class Converter {
     }
     public static void main(String[] args) {
         Converter converter = new Converter();
-        int size = 7;
+        int size = 5;
         int[] myArray = new int [size];
-
         converter.fillTheListCreation(myArray, size);
         converter.numericArrayToList(myArray);
+
+        Float[] myArr = new Float[]{22.3f, -44.8645645f, 0f, 1.8732e3f};
+        converter.numericArrayToList(myArr);
         converter.printList(converter.getList());
     }
 }
