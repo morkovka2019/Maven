@@ -2,7 +2,7 @@ package generics;
 
 import java.util.*;
 
-public class Converter <T> {
+public class Converter <T extends Number> {
     T[] arrayToConv;
     private List<T> converteredList = new ArrayList<>();
     public Converter (T[] arrayToConv) {
