@@ -2,48 +2,26 @@ package generics;
 
 import java.util.*;
 
-public class Converter {
-    private List<Number> converteredList = new ArrayList<>();
+public class Converter <T> {
+    T[] arrayToConv;
+    private List<T> converteredList = new ArrayList<>();
+    public Converter (T[] arrayToConv) {
+        this.arrayToConv = arrayToConv;
+    }
 
-
-    public void numericArrayToList( int[] arrayToConv ) {
-        for (int i=0; i<arrayToConv.length; i++) {
+    public void numericArrayToList(T[] arrayToConv) {
+        for (int i = 0; i < arrayToConv.length; i++) {
             converteredList.add(arrayToConv[i]);
         }
     }
 
-    public void numericArrayToList( Float[] arrayToConv ) {
-        for (int i=0; i<arrayToConv.length; i++) {
-            converteredList.add(arrayToConv[i]);
-        }
-    }
-
-    public List<Number> getList() {
+    public List<T> getList() {
         return this.converteredList;
     }
 
-    public void printList( List listToPrint ) {
+    public void printList( List <T> listToPrint ) {
         for (int i=0; i < listToPrint.size(); i++) {
             System.out.println(listToPrint.get(i));
         }
-    }
-
-    public int[] fillTheListCreation(int[] list, int s) {
-        Random random = new Random();
-        for (int k = 0; k < s; k++) {
-            list[k] = random.nextInt(9);
-        }
-        return list;
-    }
-    public static void main(String[] args) {
-        Converter converter = new Converter();
-        int size = 5;
-        int[] myArray = new int [size];
-        converter.fillTheListCreation(myArray, size);
-        converter.numericArrayToList(myArray);
-
-        Float[] myArr = new Float[]{22.3f, -44.8645645f, 0f, 1.8732e3f};
-        converter.numericArrayToList(myArr);
-        converter.printList(converter.getList());
     }
 }
